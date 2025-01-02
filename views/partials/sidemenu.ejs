@@ -1,0 +1,83 @@
+<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+            <li class="nav-item me-auto">
+                <a class="navbar-brand" href="/dashboard">
+                    <!-- <span class="brand-logo">
+                        <img src="/images/propertyZillaLogo.svg" alt="logo">
+                    </span> -->
+                    <h2 class="brand-text"><%= project_name %></h2>
+                </a>
+            </li>
+            <li class="nav-item nav-toggle">
+                <a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse">
+                    <i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i>
+                    <i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- <div class="shadow-bottom"></div> -->
+    <br><br>
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class="<%=(page_name == 'user-dashboard') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="/dashboard">
+                    <i data-feather="home"></i>
+                    <span class="menu-title text-truncate" data-i18n="Dashboard">Dashboard</span>
+                </a>
+            </li>
+
+            <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i></li>
+
+            <li class="<%=page_name == 'user-management' ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="/users/list">
+                    <i data-feather="user"></i>
+                    <span class="menu-title text-truncate" data-i18n="User">User Management</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="<%=(page_name == 'user-management') ? 'active' : ''%>">
+                        <a class="d-flex align-items-center" href="/users/list">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Buyers List">Buyers</span>
+                        </a>
+                    </li>
+                    <li class="<%=(page_name == 'supplier-management') ? 'active' : ''%>">
+                        <a class="d-flex align-items-center" href="/suppliers/list">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Suppliers List">Suppliers</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="<%=(page_name == 'cms-management') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="/cms/list">
+                    <i data-feather='sidebar'></i>
+                    <span class="menu-title text-truncate" data-i18n="User">CMS Management</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="<%=(page_name == 'cms-management') ? 'active' : ''%>">
+                        <a class="d-flex align-items-center" href="/cms/list">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="General CMS">General</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="<%=(page_name == 'accounttypes-management') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="/account-types/list">
+                    <i data-feather="home"></i>
+                    <span class="menu-title text-truncate" data-i18n="Account Types">Account Types</span>
+                </a>
+            </li>
+
+            <li class="<%=(page_name == 'businesstypes-management') ? 'active' : ''%> nav-item">
+                <a class="d-flex align-items-center" href="/business-types/list">
+                    <i data-feather="home"></i>
+                    <span class="menu-title text-truncate" data-i18n="Account Types">Business Types</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>

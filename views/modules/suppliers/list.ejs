@@ -1,0 +1,196 @@
+<% layout('/../layouts/mainLayout') -%>
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- users list start -->
+            <section class="app-user-list">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h3 class="fw-bolder mb-75"><%= utils.numFormatter(stats.totalUserCount) %></h3>
+                                    <span>Total Suppliers</span>
+                                </div>
+                                <div class="avatar bg-light-primary p-50" style="cursor: default !important;">
+                                    <span class="avatar-content">
+                                        <i data-feather="user" class="font-medium-4"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h3 class="fw-bolder mb-75"><%= utils.numFormatter(stats.recentUserCount) %></h3>
+                                    <span>Recent Suppliers</span>
+                                </div>
+                                <div class="avatar bg-light-danger p-50" style="cursor: default !important;" style="cursor: default !important;">
+                                    <span class="avatar-content">
+                                        <i data-feather="user-plus" class="font-medium-4"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h3 class="fw-bolder mb-75"><%= utils.numFormatter(stats.activeUserCount) %></h3>
+                                    <span>Active Suppliers</span>
+                                </div>
+                                <div class="avatar bg-light-success p-50" style="cursor: default !important;">
+                                    <span class="avatar-content">
+                                        <i data-feather="user-check" class="font-medium-4"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h3 class="fw-bolder mb-75"><%= utils.numFormatter(stats.bannedUserCount) %></h3>
+                                    <span>Banned Suppliers</span>
+                                </div>
+                                <div class="avatar bg-light-warning p-50" style="cursor: default !important;">
+                                    <span class="avatar-content">
+                                        <i data-feather="user-x" class="font-medium-4"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- list and filter start -->
+                <div class="card">
+                    <div class="card-body border-bottom">
+                        <h4 class="card-title"><%= page_title %></h4>
+                        <div class="row">
+                            <div class="col-md-4 user_status">
+                                <select id="StatusDropdown" class="form-select text-capitalize mb-md-0 mb-2xx cursor-pointer">
+                                    <option value=""> View All Status </option>
+                                    <option value="Active"> Active </option>
+                                    <option value="Inactive"> Inactive </option>
+                                    <option value="Banned"> Banned </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-datatable table-responsive pt-0">
+                        <table class="user-list-table table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Joined On</th>
+                                    <th>Status</th>
+                                    <th>Signup Completed?</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <!-- Modal to add new user starts-->
+                    <div class="modal modal-slide-in new-supplier-modal fade" id="modals-slide-in">
+                        <div class="modal-dialog">
+                            <form class="add-new-supplier modal-content pt-0" id="add-new-supplier" action="/suppliers/store" method="POST" enctype='multipart/form-data'>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">×</button>
+                                <div class="modal-header mb-1">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Supplier</h5>
+                                </div>
+                                <div class="modal-body flex-grow-1">
+                                    <div class="mb-1">
+                                        <label class="form-label" for="basic-icon-default-fullname">Full Name</label>
+                                        <input type="text" class="form-control dt-full-name" id="basic-icon-default-fullname" placeholder="John Doe" name="fullName" />
+                                    </div>
+                                    <div class="mb-1">
+                                        <label class="form-label" for="basic-icon-default-email">Email</label>
+                                        <input type="text" id="basic-icon-default-email" class="form-control dt-email" placeholder="john.doe@example.com" name="email" />
+                                    </div>
+                                    <div class="mb-1">
+                                        <label class="form-label" for="basic-icon-default-contact">Phone</label><br>
+                                        <!-- <input type="text" id="basic-icon-default-contact" class="form-control dt-contact" placeholder="(609) 933-44-22" name="phone" /> -->
+                                        <input type="tel" id="phone" class="form-control" placeholder="(609) 933-44-22" name="phone" onkeyup="verifyPhoneNumber(event)" />
+                                        <input type="hidden" name="countryCode" id="countryCode" value="">
+                                        <div id="phone_alert" class="alert alert-info" style="display: none;"></div>
+                                    </div>
+                                    <div class="mb-1">
+                                        <!-- upload and reset button -->
+                                        <a href="/uploads/noImage.png" class="me-25">
+                                            <img src="/uploads/noImage.png" id="account-upload-img" class="uploadedAvatar rounded me-50" alt="profile image" style="max-width: 100px; max-height: 100px;" />
+                                        </a>
+                                        <label for="account-upload" class="btn btn-sm btn-primary mb-75 me-75 form-label">Upload Profile Image</label>
+                                        <input type="file" name="profile_image" id="account-upload" hidden accept="image/*" />
+                                        <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 d-none">Reset</button>
+                                        <p class="mb-0">Upload image file only.</p>
+                                        <!--/ upload and reset button -->
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-1">
+                                        <label class="form-label" for="basic-icon-default-email">Account Type</label>
+                                        <select name="account_type" id="account_type" class="form-control">
+                                            <option disabled selected>Please Choose The Account Type</option>
+                                            <% account_types.map(data => { %>
+                                                <option value="<%= data._id %>"><%= data.title %></option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary me-1 data-submit" onclick="verifyPhoneNumber(event)">Submit</button>
+                                    <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Modal to add new user Ends-->
+                </div>
+                <!-- list and filter end -->
+            </section>
+            <!-- users list ends -->
+
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+
+<!-- BEGIN: Datatable JS-->
+<script src="/js/datatables/app-supplier-list.js"></script>
+<!-- END: Datatable JS-->
+
+<script>
+    const phone_info = document.querySelector("#phone_alert");
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        preferredCountries: ["us", "co", "in", "de"],
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+    if ($('#phone').val()) {
+        let country = phoneInput.getSelectedCountryData();
+        if (country && country.dialCode) {
+            $('#countryCode').val(country.dialCode);
+        }
+    }
+    // console.log(phoneInput);
+    function verifyPhoneNumber(event) {
+        let country = phoneInput.getSelectedCountryData();
+        if (country && country.dialCode) {
+            $('#countryCode').val(country.dialCode);
+        }
+        const phoneNumber = phoneInput.getNumber();
+        if (phoneNumber) {
+            phone_info.style.display = "";
+            phone_info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+        } else {
+            phone_info.style.display = "none";
+        }
+        
+    }
+</script>

@@ -1,0 +1,30 @@
+import { Model } from 'mongoose';
+import { AdminAccountDTO, AdminChangePasswordDTO, ChangePwdDTO, ForgetPwdDTO, SigninDTO, SignupDTO, UserCreateFromAdminDTO } from './dto';
+import { RoleDocument } from 'src/role/schemas/role.schema';
+import { UserRepository } from './repositories';
+import { Request } from 'express';
+import { MailerService, UtilsService } from 'src/helpers';
+export declare class UsersService {
+    private roleModel;
+    private userRepo;
+    private mailerService;
+    private utilsService;
+    constructor(roleModel: Model<RoleDocument>, userRepo: UserRepository, mailerService: MailerService, utilsService: UtilsService);
+    generateHash: (password: string) => string;
+    validPassword: (password: string, checkPassword: string) => boolean;
+    signin(body: SigninDTO): Promise<any>;
+    forgetPassword(body: ForgetPwdDTO, rolegroup: string): Promise<any>;
+    accountSubmit(body: AdminAccountDTO, files: any, user: any): Promise<any>;
+    adminChangePasswordSubmit(body: AdminChangePasswordDTO, user: any): Promise<any>;
+    userChangePasswordSubmit(body: ChangePwdDTO): Promise<any>;
+    getAllUser(req: Request): Promise<any>;
+    userListPageStats(): Promise<any>;
+    dashboardPageStats(): Promise<any>;
+    userCreateFromAdmin(body: UserCreateFromAdminDTO, files: any): Promise<any>;
+    userSignup(body: SignupDTO, files: any): Promise<any>;
+    statusChange(id: string, status: string): Promise<any>;
+    deleteAccount(id: string): Promise<any>;
+    verifyEmailOrPhoneForcefully(id: string, type: string): Promise<any>;
+    userDetails(id: string): Promise<any>;
+    userUpdateFromAdmin(body: UserCreateFromAdminDTO, files: any): Promise<any>;
+}

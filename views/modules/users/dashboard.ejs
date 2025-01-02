@@ -1,0 +1,99 @@
+<% layout('/../layouts/mainLayout') -%>
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- Dashboard Ecommerce Starts -->
+            <section id="dashboard-ecommerce">
+                <div class="row match-height">
+                    <!-- Statistics Card -->
+                    <!-- <div class="col-xl-8 col-md-6 col-12"> -->
+                    <div class="col-12">
+                        <div class="card card-statistics">
+                            <div class="card-header">
+                                <h4 class="card-title">Statistics</h4>
+                                <div class="d-flex align-items-center">
+                                    <p class="card-text font-small-2 me-25 mb-0 calc-time-diff">Updated <%= moment().format() %></p>
+                                </div>
+                            </div>
+                            <div class="card-body statistics-body">
+                                <div class="row">
+                                    <div class="col-xl-2 col-sm-6 col-12 mb-2 mb-xl-0">
+                                        <a href="/users/list">
+                                            <div class="d-flex flex-row">
+                                                <div class="avatar bg-light-info me-2">
+                                                    <div class="avatar-content">
+                                                        <i data-feather="user" class="avatar-icon"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="my-auto">
+                                                    <h4 class="fw-bolder mb-0"><%= utils.numFormatter(stats.totalUserCount) %></h4>
+                                                    <p class="card-text font-small-3 mb-0">Total Buyers</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xl-2 col-sm-6 col-12 mb-2 mb-xl-0">
+                                        <a href="/users/list">
+                                            <div class="d-flex flex-row">
+                                                <div class="avatar bg-light-info me-2">
+                                                    <div class="avatar-content">
+                                                        <i data-feather="user" class="avatar-icon"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="my-auto">
+                                                    <h4 class="fw-bolder mb-0"><%= utils.numFormatter(stats.recentUserCount) %></h4>
+                                                    <p class="card-text font-small-3 mb-0">Recent Buyers</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xl-2 col-sm-6 col-12 mb-2 mb-xl-0">
+                                        <a href="/users/list">
+                                            <div class="d-flex flex-row">
+                                                <div class="avatar bg-light-info me-2">
+                                                    <div class="avatar-content">
+                                                        <i data-feather="user" class="avatar-icon"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="my-auto">
+                                                    <h4 class="fw-bolder mb-0"><%= utils.numFormatter(stats.totalSupplierCount) %></h4>
+                                                    <p class="card-text font-small-3 mb-0">Total Suppliers</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xl-2 col-sm-6 col-12 mb-2 mb-xl-0">
+                                        <a href="/users/list">
+                                            <div class="d-flex flex-row">
+                                                <div class="avatar bg-light-info me-2">
+                                                    <div class="avatar-content">
+                                                        <i data-feather="user" class="avatar-icon"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="my-auto">
+                                                    <h4 class="fw-bolder mb-0"><%= utils.numFormatter(stats.recentSupplierCount) %></h4>
+                                                    <p class="card-text font-small-3 mb-0">Recent Suppliers</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Statistics Card -->
+                </div>
+            </section>
+            <!-- Dashboard Ecommerce ends -->
+
+        </div>
+    </div>
+</div>
+
+<!-- BEGIN: Page JS-->
+<!-- <script src="/js/pages/dashboard-ecommerce.js"></script> -->
+<!-- END: Page JS-->
