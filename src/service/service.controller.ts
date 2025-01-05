@@ -22,12 +22,7 @@ import { diskStorage } from "multer";
 
 import { AdminAuthFilter } from "src/helpers";
 import {
-  AdminAccountDTO,
-  AdminChangePasswordDTO,
-  ChangePwdDTO,
-  ForgetPwdDTO,
-  SigninDTO,
-  UserCreateFromAdminDTO,
+  CreateServiceDTO,
 } from "./dto";
 import { ServiceRepository } from "./repositories";
 import { ServiceService } from "./service.service";

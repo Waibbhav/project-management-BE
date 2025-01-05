@@ -2,10 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import * as bcrypt from "bcrypt-nodejs";
-import {
-  AdminAccountDTO,
-  AdminChangePasswordDTO,
-} from "./dto";
+import { CreateServiceDTO } from "./dto";
 import { ServiceRepository } from "./repositories";
 import * as _ from "underscore";
 import * as jwt from "jsonwebtoken";

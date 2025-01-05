@@ -9,157 +9,148 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserCreateFromAdminDTO = exports.AdminChangePasswordDTO = exports.AdminAccountDTO = exports.ChangePwdDTO = exports.ForgetPwdDTO = exports.SignupDTO = exports.SigninDTO = void 0;
+exports.CreateServiceDTO = void 0;
 const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
-class SigninDTO {
+const class_validator_2 = require("class-validator");
+class CreateServiceDTO {
 }
 __decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, class_validator_1.IsEmail)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], SigninDTO.prototype, "email", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({ description: "Task description for the service request" }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], SigninDTO.prototype, "password", void 0);
-exports.SigninDTO = SigninDTO;
-class SignupDTO {
-}
+], CreateServiceDTO.prototype, "taskDescription", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({
+        description: "Type of request (Single, Multi, or Team)",
+        enum: ["Single", "Multi", "Team"],
+        default: "Single",
+    }),
+    (0, class_validator_2.IsEnum)(["Single", "Multi", "Team"]),
+    __metadata("design:type", String)
+], CreateServiceDTO.prototype, "requestType", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ description: "Project for which the task is required" }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], SignupDTO.prototype, "first_name", void 0);
+], CreateServiceDTO.prototype, "project", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({ description: "Start date of the service request" }),
+    (0, class_validator_2.IsDate)(),
+    __metadata("design:type", Date)
+], CreateServiceDTO.prototype, "beginDate", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ description: "End date of the service request" }),
+    (0, class_validator_2.IsDate)(),
+    __metadata("design:type", Date)
+], CreateServiceDTO.prototype, "endDate", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ description: "Total amount of man days" }),
+    (0, class_validator_2.IsNumber)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Number)
+], CreateServiceDTO.prototype, "manDays", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ description: "City/town for the location of the service" }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], SignupDTO.prototype, "last_name", void 0);
+], CreateServiceDTO.prototype, "location", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], SignupDTO.prototype, "companyName", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, class_validator_1.IsEmail)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], SignupDTO.prototype, "email", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], SignupDTO.prototype, "password", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ type: "string", format: "binary" }),
+    (0, swagger_1.ApiProperty)({ description: "Number of specialists required" }),
+    (0, class_validator_2.IsNumber)(),
     (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Object)
-], SignupDTO.prototype, "profile_image", void 0);
-exports.SignupDTO = SignupDTO;
-class ForgetPwdDTO {
-}
+    __metadata("design:type", Number)
+], CreateServiceDTO.prototype, "specialistsRequired", void 0);
 __decorate([
-    (0, class_validator_1.IsEmail)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], ForgetPwdDTO.prototype, "email", void 0);
-exports.ForgetPwdDTO = ForgetPwdDTO;
-class ChangePwdDTO {
-}
+    (0, swagger_1.ApiProperty)({ description: "Number of offers from each provider required" }),
+    (0, class_validator_2.IsNumber)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Number)
+], CreateServiceDTO.prototype, "offersRequired", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        description: "First name of the consumer (service request creator)",
+    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], ChangePwdDTO.prototype, "new_password", void 0);
+], CreateServiceDTO.prototype, "consumerFirstName", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        description: "Last name of the consumer (service request creator)",
+    }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], ChangePwdDTO.prototype, "confirm_password", void 0);
+], CreateServiceDTO.prototype, "consumerLastName", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: "Optional contact for representatives" }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], CreateServiceDTO.prototype, "representatives", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        description: "Master Agreement ID associated with the service request",
+    }),
+    (0, class_validator_2.IsMongoId)(),
+    __metadata("design:type", String)
+], CreateServiceDTO.prototype, "masterAgreementId", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        description: "Domain for the service request",
+        enum: ["Consulting and Development", "Operations", "Data", "IT Security"],
+    }),
+    (0, class_validator_2.IsEnum)(["Consulting and Development", "Operations", "Data", "IT Security"]),
+    __metadata("design:type", String)
+], CreateServiceDTO.prototype, "domain", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        description: "Experience level required for the role",
+        enum: ["Junior", "Senior", "Intermediate", "Principal"],
+    }),
+    (0, class_validator_2.IsEnum)(["Junior", "Senior", "Intermediate", "Principal"]),
+    __metadata("design:type", String)
+], CreateServiceDTO.prototype, "experienceLevel", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ description: "Role required for the service request" }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], ChangePwdDTO.prototype, "id", void 0);
-exports.ChangePwdDTO = ChangePwdDTO;
-class AdminAccountDTO {
-}
+], CreateServiceDTO.prototype, "role", void 0);
 __decorate([
-    (0, class_validator_1.IsEmail)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        description: "Technology expertise level (Common, Uncommon, Rare)",
+        enum: ["Common", "Uncommon", "Rare"],
+        default: "Common",
+    }),
+    (0, class_validator_2.IsEnum)(["Common", "Uncommon", "Rare"]),
     __metadata("design:type", String)
-], AdminAccountDTO.prototype, "email", void 0);
+], CreateServiceDTO.prototype, "technologyLevel", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ description: "Technology for the service request" }),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], AdminAccountDTO.prototype, "first_name", void 0);
+], CreateServiceDTO.prototype, "technology", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        description: "Location type for the service request",
+        enum: ["Onshore", "Nearshore", "Farshore"],
+    }),
+    (0, class_validator_2.IsEnum)(["Onshore", "Nearshore", "Farshore"]),
+    __metadata("design:type", String)
+], CreateServiceDTO.prototype, "locationType", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        description: "Document (PDF/Word) with further details for the request",
+    }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], AdminAccountDTO.prototype, "last_name", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], AdminAccountDTO.prototype, "id", void 0);
-exports.AdminAccountDTO = AdminAccountDTO;
-class AdminChangePasswordDTO {
-}
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], AdminChangePasswordDTO.prototype, "old_password", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], AdminChangePasswordDTO.prototype, "password", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], AdminChangePasswordDTO.prototype, "confirm-new-password", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], AdminChangePasswordDTO.prototype, "id", void 0);
-exports.AdminChangePasswordDTO = AdminChangePasswordDTO;
-class UserCreateFromAdminDTO {
-}
-__decorate([
-    (0, class_validator_1.IsEmail)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UserCreateFromAdminDTO.prototype, "email", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], UserCreateFromAdminDTO.prototype, "fullName", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], UserCreateFromAdminDTO.prototype, "phone", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], UserCreateFromAdminDTO.prototype, "countryCode", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], UserCreateFromAdminDTO.prototype, "business_type", void 0);
-exports.UserCreateFromAdminDTO = UserCreateFromAdminDTO;
+], CreateServiceDTO.prototype, "document", void 0);
+exports.CreateServiceDTO = CreateServiceDTO;
 //# sourceMappingURL=service.dto.js.map
