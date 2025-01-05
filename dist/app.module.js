@@ -18,6 +18,8 @@ const userrepository_module_1 = require("./users/repositories/userrepository.mod
 const users_module_1 = require("./users/users.module");
 const role_module_1 = require("./role/role.module");
 const cms_module_1 = require("./cms/cms.module");
+const service_module_1 = require("./service/service.module");
+const service_repository_module_1 = require("./service/repositories/service.repository.module");
 const EventEmitterOptions = {
     wildcard: false,
     delimiter: '.',
@@ -45,6 +47,8 @@ AppModule = __decorate([
             strategy_module_1.StrategyModule,
             cms_module_1.CmsModule,
             cms_repository_module_1.Cms_repositoryModule,
+            service_module_1.ServiceModule,
+            service_repository_module_1.ServiceRepositoryModule
         ],
     })
 ], AppModule);

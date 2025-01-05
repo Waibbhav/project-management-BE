@@ -9,6 +9,8 @@ import { UserRepositoryModule } from './users/repositories/userrepository.module
 import { UsersModule } from './users/users.module';
 import { RoleModule } from './role/role.module';
 import { CmsModule } from './cms/cms.module';
+import { ServiceModule } from './service/service.module';
+import { ServiceRepositoryModule } from './service/repositories/service.repository.module';
 
 const EventEmitterOptions = {
   // set this to `true` to use wildcards
@@ -44,6 +46,8 @@ const EventEmitterOptions = {
     StrategyModule,
     CmsModule,
     Cms_repositoryModule,
+    ServiceModule,
+    ServiceRepositoryModule
   ],
 })
 export class AppModule {}
