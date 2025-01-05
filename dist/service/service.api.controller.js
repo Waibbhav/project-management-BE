@@ -22,7 +22,7 @@ const multer_1 = require("multer");
 const dto_1 = require("./dto");
 const repositories_1 = require("./repositories");
 const service_service_1 = require("./service.service");
-const fileFieldsInterceptor = (0, platform_express_1.FileFieldsInterceptor)([{ name: "profile_image", maxCount: 1 }], {
+const fileFieldsInterceptor = (0, platform_express_1.FileFieldsInterceptor)([{ name: "document", maxCount: 1 }], {
     storage: (0, multer_1.diskStorage)({
         destination(req, file, callback) {
             if (!(0, fs_1.existsSync)("./public/uploads/user")) {

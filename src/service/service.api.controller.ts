@@ -28,7 +28,7 @@ import { ServiceRepository } from "./repositories";
 import { ServiceService } from "./service.service";
 
 const fileFieldsInterceptor = FileFieldsInterceptor(
-  [{ name: "profile_image", maxCount: 1 }],
+  [{ name: "document", maxCount: 1 }],
   {
     storage: diskStorage({
       destination(req, file, callback) {

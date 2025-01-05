@@ -18,7 +18,6 @@ class CreateServiceDTO {
 __decorate([
     (0, swagger_1.ApiProperty)({ description: "Task description for the service request" }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateServiceDTO.prototype, "taskDescription", void 0);
 __decorate([
@@ -33,7 +32,6 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)({ description: "Project for which the task is required" }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateServiceDTO.prototype, "project", void 0);
 __decorate([
@@ -49,13 +47,11 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)({ description: "Total amount of man days" }),
     (0, class_validator_2.IsNumber)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
 ], CreateServiceDTO.prototype, "manDays", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ description: "City/town for the location of the service" }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateServiceDTO.prototype, "location", void 0);
 __decorate([
@@ -75,7 +71,6 @@ __decorate([
         description: "First name of the consumer (service request creator)",
     }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateServiceDTO.prototype, "consumerFirstName", void 0);
 __decorate([
@@ -83,7 +78,6 @@ __decorate([
         description: "Last name of the consumer (service request creator)",
     }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateServiceDTO.prototype, "consumerLastName", void 0);
 __decorate([
@@ -118,7 +112,6 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)({ description: "Role required for the service request" }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateServiceDTO.prototype, "role", void 0);
 __decorate([
@@ -133,7 +126,6 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)({ description: "Technology for the service request" }),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateServiceDTO.prototype, "technology", void 0);
 __decorate([

@@ -10,7 +10,6 @@ import {
 export class CreateServiceDTO {
   @ApiProperty({ description: "Task description for the service request" })
   @IsString()
-  @IsNotEmpty()
   taskDescription: string; // Task description field
 
   @ApiProperty({
@@ -23,7 +22,6 @@ export class CreateServiceDTO {
 
   @ApiProperty({ description: "Project for which the task is required" })
   @IsString()
-  @IsNotEmpty()
   project: string; // Project for which the task is required
 
   @ApiProperty({ description: "Start date of the service request" })
@@ -36,12 +34,10 @@ export class CreateServiceDTO {
 
   @ApiProperty({ description: "Total amount of man days" })
   @IsNumber()
-  @IsNotEmpty()
   manDays: number; // Amount of man days (total)
 
   @ApiProperty({ description: "City/town for the location of the service" })
   @IsString()
-  @IsNotEmpty()
   location: string; // City/town for the location
 
   @ApiProperty({ description: "Number of specialists required" })
@@ -58,14 +54,12 @@ export class CreateServiceDTO {
     description: "First name of the consumer (service request creator)",
   })
   @IsString()
-  @IsNotEmpty()
   consumerFirstName: string; // Consumer's first name
 
   @ApiProperty({
     description: "Last name of the consumer (service request creator)",
   })
   @IsString()
-  @IsNotEmpty()
   consumerLastName: string; // Consumer's last name
 
   @ApiProperty({ description: "Optional contact for representatives" })
@@ -95,7 +89,6 @@ export class CreateServiceDTO {
 
   @ApiProperty({ description: "Role required for the service request" })
   @IsString()
-  @IsNotEmpty()
   role: string; // Role (e.g., Developer, Project Manager)
 
   @ApiProperty({
@@ -108,7 +101,6 @@ export class CreateServiceDTO {
 
   @ApiProperty({ description: "Technology for the service request" })
   @IsString()
-  @IsNotEmpty()
   technology: string; // Technology (e.g., Java, AWS, Python)
 
   @ApiProperty({
