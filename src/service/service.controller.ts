@@ -52,7 +52,6 @@ const fileFieldsInterceptor = FileFieldsInterceptor(
 export class ServiceController {
   constructor(
     private serviceService: ServiceService,
-
     private serviceRepo: ServiceRepository
   ) {}
 

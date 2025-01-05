@@ -15,10 +15,36 @@ const repositories_1 = require("./repositories");
 const mongoose = require("mongoose");
 const helpers_1 = require("../helpers");
 let ServiceService = class ServiceService {
-    constructor(userRepo, mailerService, utilsService) {
-        this.userRepo = userRepo;
+    constructor(serviceRepo, mailerService, utilsService) {
+        this.serviceRepo = serviceRepo;
         this.mailerService = mailerService;
         this.utilsService = utilsService;
+    }
+    async createService(body, files) {
+        try {
+            const saveService = await this.serviceRepo.save(body);
+            if (saveService && saveService._id) {
+                return {
+                    success: true,
+                    type: "success",
+                    data: saveService,
+                    message: "Service Request created successfully!",
+                    status: 200
+                };
+            }
+            else {
+                return {
+                    success: false,
+                    type: "error",
+                    message: "Something went wrong",
+                    status: 204
+                };
+            }
+        }
+        catch (error) {
+            console.error(error);
+            return { success: false, type: "error", message: error.message };
+        }
     }
 };
 ServiceService = __decorate([

@@ -54,4 +54,31 @@ export class ServiceApiController {
     private serviceRepo: ServiceRepository
   ) {}
 
+  @ApiConsumes("multipart/form-data")
+  @Post("service/create")
+  @UseInterceptors(fileFieldsInterceptor)
+  async createService(
+    @Body() dto: CreateServiceDTO,
+    @Req() req: Request,
+    @Res() res: Response
+  ) {
+    try {
+      const result = await this.serviceService.createService(dto, req.body.files);
+      if (result.success) {
+        res.status(200).json({
+          status: result.status,
+          data: result.data,
+          message: result.message,
+        });
+      } else {
+        res.status(500).json({
+          status: 500,
+          data: result.data,
+          message: result.message,
+        });
+      }
+    } catch (error) {
+      res.status(500).json({ status: 500, data: [], message: error.message });
+    }
+  }
 }
